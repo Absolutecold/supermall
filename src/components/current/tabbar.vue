@@ -1,12 +1,8 @@
 <template>
 	<barbox>
 		<baritem path="/home" isstyle="blue">
-			<div >
-				<img slot="img" src="../../assets/img/Tabbar/首页-选中.png">
-			</div>
-			<div>
-				<img slot="activeimg" src="../../assets/img/Tabbar/redhome.png">
-			</div>
+			<img slot="img" src="../../assets/img/Tabbar/首页-选中.png">
+			<img slot="activeimg" src="../../assets/img/Tabbar/redhome.png">
 			<div slot="text">首页</div>
 		</baritem>
 

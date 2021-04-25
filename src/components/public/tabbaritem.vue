@@ -1,13 +1,13 @@
 <template>
 	<div class="box" @click="chilclik">
 		<div v-if="!isactive">
-			<slot name="img"><img src="../../assets/img/Tabbar/首页-选中.png"></slot>
+			<slot name="img"></slot>
 		</div>
 		<div v-else>
-			<slot name="activeimg"><img src="../../assets/img/Tabbar/redhome.png"></slot>
+			<slot name="activeimg"></slot>
 		</div>
 		<div :style="actvieStyle">
-			<slot name="text">首页</slot>
+			<slot name="text"></slot>
 		</div>
 	</div>
 </template>
