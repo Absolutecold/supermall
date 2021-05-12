@@ -14,6 +14,7 @@
 
 <script>
 	export default {
+    name:"tabbaritem",
 		props: {
 			path: String,
 			itemStyle: {
@@ -23,7 +24,7 @@
 		},
 		data() {
 			return {
-				
+
 			}
 		},
 		methods: {
@@ -45,21 +46,6 @@
 	}
 </script>
 
-<style>
-	.box {
-		flex: 1;
-		text-align: center;
-		cursor: pointer;
-		font-size: 14px;
-	}
+<style >
 
-	.box img {
-		width: 24px;
-		vertical-align: middle;
-		margin-top: 4px;
-	}
-
-	.active {
-		color: red;
-	}
 </style>

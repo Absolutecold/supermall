@@ -21,10 +21,10 @@
 <style>
   .tabnav {
     display: flex;
+    flex: 1;
     height: 44px;
     line-height: 44px;
     text-align: center;
-    box-shadow: 0px 5px 6px #F3F3F3;
   }
 
   .navleft,
@@ -32,7 +32,8 @@
     width: 60px;
   }
 
-  .navcenter {
+  .navcenter{
     flex: 1;
   }
+
 </style>

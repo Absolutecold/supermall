@@ -6,6 +6,7 @@ const Home = () => import('../views/home/Home.vue')
 const Fen = () => import('../views/fen/Fen.vue')
 const My = () => import('../views/my/My.vue')
 const Shopcat = () => import('../views/shopcat/Shopcat.vue')
+const Details = () => import('../views/details/Details.vue')
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,10 @@ const routes = [{
   {
     path: "/fen",
     component: Fen
+  },
+  {
+    path: "/details/:iid",
+    component: Details
   },
 
 ]
