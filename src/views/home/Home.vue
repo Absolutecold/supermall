@@ -3,16 +3,10 @@
     <tabnav class="_homenav">
       <div slot="center">购物街</div>
     </tabnav>
-    <scroll
-    :probe-type="3"
-    @scroll="scroll"
-    class="center"
-    :Load="true"
-    @pullingUp="pullingUp"
-    :data="type"
-    ref="scroll">
+    <scroll :probe-type="3" @scroll="scroll" class="center" :Load="true" @pullingUp="pullingUp" :data="type"
+      ref="scroll">
       <div>
-        <loopimg v-if="loopimg.length>0" :imglist="loopimg"/>
+        <loopimg v-if="loopimg.length>0" :imglist="loopimg" />
         <reconnav v-if="recommend.length>0" :recomdlist="recommend" />
         <popular />
         <tabcontrol :titles="title" @typeclick="typeclick" />
@@ -39,7 +33,9 @@
     gethome,
     homegoods
   } from "../../network/home.js"
-  import{debounce} from '../../currency/debounce.js'
+  import {
+    debounce
+  } from '../../currency/debounce.js'
   export default {
     components: {
       tabnav,
@@ -56,37 +52,45 @@
         loopimg: [],
         recommend: [],
         goods: {
-          'pop': {page: 0,list: []},
-          'new': {page: 0, list: []},
-          'sell': { page: 0,list: []}
+          'pop': {
+            page: 0,
+            list: []
+          },
+          'new': {
+            page: 0,
+            list: []
+          },
+          'sell': {
+            page: 0,
+            list: []
+          }
         },
         goodsindex: "pop",
-        title:['流行','新款','精选'],
-        isbool:false,
-        controltop:0,
-        isfixe:false,
-        scrollTop:0
+        title: ['流行', '新款', '精选'],
+        isbool: false,
+        controltop: 0,
+        isfixe: false,
+        scrollTop: 0
       }
     },
     created() {
       this.gethome(),
-      this.homegoods('pop'),
-      this.homegoods('new'),
-      this.homegoods('sell')
+        this.homegoods('pop'),
+        this.homegoods('new'),
+        this.homegoods('sell')
     },
-    mounted(){
-      const refresh=debounce(this.$refs.scroll.refresh,500)
-      this.$bus.$on('imgload',()=>{
+    mounted() {
+      const refresh = debounce(this.$refs.scroll.refresh, 500)
+      this.$bus.$on('imgload', () => {
         refresh()
-        // this.$refs.scroll.refresh()
       })
     },
     activated() {
-      this.$refs.scroll.scrollTo(0,this.scrollTop,1000)
+      this.$refs.scroll.scrollTo(0, this.scrollTop, 1000)
       this.$refs.scroll.refresh()
     },
     deactivated() {
-      this.scrollTop=this.$refs.scroll.scroll.y
+      this.scrollTop = this.$refs.scroll.scroll.y
     },
     methods: {
       gethome() {
@@ -98,29 +102,29 @@
       homegoods(type) {
         const page = this.goods[type].list.page + 1
         homegoods(type, page).then(res => {
-          for(let i=0;i<res.data.data.list.length;i++){
+          for (let i = 0; i < res.data.data.list.length; i++) {
             this.goods[type].list.push(res.data.data.list[i])
           }
           this.goods[type].list.page += 1
           this.$refs.scroll.finishPullUp()
         })
       },
-      pullingUp(){
+      pullingUp() {
         this.homegoods(this.goodsindex)
       },
       typeclick(index) {
-        const typelist=['pop','new','sell']
-        this.goodsindex=typelist[index]
+        const typelist = ['pop', 'new', 'sell']
+        this.goodsindex = typelist[index]
       },
-      scroll(positon){
-        this.isbool=-(positon.y)>1000
-        this.isfixe=-(positon.y)>this.controltop
+      scroll(positon) {
+        this.isbool = -(positon.y) > 1000
+        this.isfixe = -(positon.y) > this.controltop
       },
-      gotoclick(){
-        this.$refs.scroll.scrollTo(0,0,1000)
+      gotoclick() {
+        this.$refs.scroll.scrollTo(0, 0, 1000)
       }
     },
-    computed:{
+    computed: {
       type() {
         return this.goods[this.goodsindex].list
       },
@@ -142,12 +146,12 @@
     color: #F6F6F6;
   }
 
-  .fiexd{
+  .fiexd {
     position: relative;
     top: 44px;
   }
 
-  .center{
+  .center {
     position: absolute;
     top: 44px;
     bottom: 49px;

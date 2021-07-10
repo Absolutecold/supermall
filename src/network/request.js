@@ -19,6 +19,5 @@ export function request(config){
   	console.log(err)
   })
   
-  
 	return instanc1(config)
  }

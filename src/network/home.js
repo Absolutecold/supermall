@@ -12,6 +12,6 @@ export function homegoods(type,page){
     params:{
     		type,
         page
-    	}
+    }
   })
 }
